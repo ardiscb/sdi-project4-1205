@@ -91,18 +91,15 @@ var courtneyLib = function() {
 		}
 		return string2;
 	};
-
-	//Numbers
+	/*Number function that formats a number to use a specific number of decimal places,
+	such as money, 2.1 --> 2.10
+	*/
 	var formatNum = function (number) {
-		//TODO: Fill in working code here that formats a number to use a specific number of decimal places such as money: 2.1 --> 2.10
-
-		//Not complete
-		/*
-		number = Math.floor();
-		*/
+		var result = number.toFixed(2);
+		return result;
 	};
 
-	var matchNum = function (number) {
+	var matchNum = function (compare, percent) {
 		//TODO: Fill in working code that fuzzy-matches a number: is the number above or below a number within a certain percent?
 	};
 
@@ -125,7 +122,6 @@ var courtneyLib = function() {
 
 	var sort = function (array) {
 		//TODO: Fill in working code that given an array of objects and the name of a key, rturn the array sorted by the value of that key in each of the objects: "a" + [{a:2}, {a:3}, {a:1}] --> [{a:1}, {a:2}, {a:3}]
-		array = [];
 	};
 
 	//changeSeparator("laptop.phone.bag.keys");
@@ -135,8 +131,8 @@ var courtneyLib = function() {
 		"isURL": isURL,
 		"isPhoneNum": isPhoneNum,		
 		"makeTitle": makeTitle,
-		"changeSeparator": changeSeparator
-		//"formatNum": formatNum,
+		"changeSeparator": changeSeparator,
+		"formatNum": formatNum
 		//"matchNum" : matchNum,
 		//"findDays" : findDays,
 		//"convertString" : convertString,
@@ -155,3 +151,4 @@ console.log(library.isURL("http://online.fullsail.edu"));
 console.log(library.isPhoneNum("(803)-972-0807"));
 console.log(library.makeTitle("user support associate"));
 console.log(library.changeSeparator("apples, oranges, grapes"));
+console.log("$" + library.formatNum(5.699));
