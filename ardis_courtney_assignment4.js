@@ -4,9 +4,10 @@ Date: May 24, 2012
 Assignment: Deliverable 4
 Term: 1205
 */
+
 //Library
 var courtneyLib = function() {
-  //String function that tests whether a string follows a phone number pattern such as (123)-456-7890
+	//String function that tests whether a string follows a phone number pattern such as (123)-456-7890
 	var isPhoneNum = function (phoneNum) {
 		/*RegExp: variable pattern
 		Matches a literal "(" between zero and one time
@@ -40,22 +41,35 @@ var courtneyLib = function() {
 		if (pattern.test(emailAdd)) {
 			return true;
 		} else {
+			//Invalid email address
 			return false;
 		};
 	};
 
-	//Function: tests whether a string is a URL. Does it start with http: or https:?
+	//String function that tests whether a string is a URL. Does it start with http: or https:?
 	var isURL = function (url) {
 		if (url.match("http://") || url.match("https://")) {
 			return true;
 		}
 		else {
+			//Invalid URL
 			return false;
 		};
 	};
 
-	var makeTitle = function (words) {
-		//TODO: Fill in working code here that takes a string, splits into words, then uppercases the first letter of each word
+    //String function that takes a string, splits into words, 
+    //then capitalizes the first letter of each word,
+    //then adds it to an array and joins the words together with a space
+	var makeTitle = function(string){
+	   var words = string.split(" ");
+	   var array = [];
+	   for (i in words)
+	   {
+	      temp = words[i].toLowerCase();
+	      temp = temp.charAt(0).toUpperCase() + temp.substring(1);
+	      array.push(temp);
+	   }
+	   return array.join(" ");
 	};
 
 	var changeSeparator = function (string, string2) {
@@ -111,10 +125,15 @@ var courtneyLib = function() {
 	return {
 		"isEmail": isEmail,
 		"isURL": isURL,
-		"isPhoneNum": isPhoneNum		
-		//"makeTitle": makeTitle,
+		"isPhoneNum": isPhoneNum,		
+		"makeTitle": makeTitle
 		//"changeSeparator": changeSeparator,
 		//"formatNum": formatNum,
+		//"matchNum" : matchNum,
+		//"findDays" : findDays,
+		//"convertString" : convertString,
+		//"findNum" : findNum,
+		//"findValue" : findValue,
 		//"sort": sort
 
 	};
@@ -125,3 +144,4 @@ var library = courtneyLib();
 console.log(library.isEmail("ardiscb@fullsail.edu"));
 console.log(library.isURL("http://online.fullsail.edu"));
 console.log(library.isPhoneNum("(803)-972-0807"));
+console.log(library.makeTitle("user support associate"));
