@@ -9,7 +9,7 @@ Term: 1205
 var courtneyLib = function() {
 	//String function that tests whether a string follows a phone number pattern such as (123)-456-7890
 	var isPhoneNum = function (phoneNum) {
-		/*RegExp: variable pattern
+		/*RegExp: variable pattern in isPhoneNum function
 		Matches a literal "(" between zero and one time
 		Matches a digit between 0 and 9 exactly three times
 		Matches a literal ")" between zero and one time
@@ -30,10 +30,10 @@ var courtneyLib = function() {
 
 	//String function that tests whether a string follows an email address pattern such as aaa@bbb.ccc
 	var isEmail = function (emailAdd) {
-		/*RegExp: variable pattern
-		Matches alpa-numeric characters, lowercase or uppercase, and it can have periods, underscores, and hyphens
+		/*RegExp: variable pattern in isEmail function
+		Matches alpa-numeric characters, lowercase or uppercase, including periods, underscores, and hyphens
 		Matches a literal "@"
-		Matches alpa-numeric characters, lowercase or uppercase, and it can have periods, underscores, and hyphens.
+		Matches alpa-numeric characters, lowercase or uppercase, including periods, underscores, and hyphens.
 		Matches a literal "."
 		Matches two to four alphabets, lowercase or uppercase
 		*/
@@ -48,7 +48,15 @@ var courtneyLib = function() {
 
 	//String function that tests whether a string is a URL. Does it start with http: or https:?
 	var isURL = function (url) {
-		if (url.match("http://") || url.match("https://")) {
+		/* RegExp: variable pattern in isURL function
+		Matches ftp or http ("s" in https is optional)
+		Matches literal "://"
+		Matches www (optional)
+		Matches a minimum of 3 alpha-numeric characters, lowercase or uppercase, including periods and hyphens
+		Matches two to four alpha characters, lowercase or uppercase
+		*/
+		var pattern = /^((ftp|https?):\/\/)?(www)?[a-zA-Z0-9-\.]{3,}\.[a-zA-Z]{2,4}$/;
+		if (pattern.test(url)) {
 			return true;
 		}
 		else {
@@ -71,7 +79,7 @@ var courtneyLib = function() {
 	   }
 	   return array.join(" ");
 	};
-	
+
 	/*String function that given a string that is a list of things separated by a given string, 
 	as well as another string separator, return a string with the first separator changed to the second, 
 	such as: "a,b,c" --> "a/b/c"
@@ -141,6 +149,7 @@ var courtneyLib = function() {
 
 var library = courtneyLib();
 
+//Tests
 console.log(library.isEmail("ardiscb@fullsail.edu"));
 console.log(library.isURL("http://online.fullsail.edu"));
 console.log(library.isPhoneNum("(803)-972-0807"));
