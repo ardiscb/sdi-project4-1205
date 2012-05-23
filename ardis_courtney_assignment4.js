@@ -71,17 +71,17 @@ var courtneyLib = function() {
 	   }
 	   return array.join(" ");
 	};
-
-	var changeSeparator = function (string, string2) {
-		//TODO: Fill in working code here that given a string that is a list of things separated by a given string, as well as another string separator, return a string with the first separator changed to the second: 
-		//"a,b,c" + "," + "/" --> "a/b/c".
-
-		//Fill in For statement
-		/*
-		for () {
-			".".replace(", ");
+	
+	/*String function that given a string that is a list of things separated by a given string, 
+	as well as another string separator, return a string with the first separator changed to the second, 
+	such as: "a,b,c" --> "a/b/c"
+	*/
+	var changeSeparator = function (string) {
+		var string;
+		for (i in string) {
+			string2 = string.replace(/, /g,"/");
 		}
-		*/
+		return string2;
 	};
 
 	//Numbers
@@ -126,8 +126,8 @@ var courtneyLib = function() {
 		"isEmail": isEmail,
 		"isURL": isURL,
 		"isPhoneNum": isPhoneNum,		
-		"makeTitle": makeTitle
-		//"changeSeparator": changeSeparator,
+		"makeTitle": makeTitle,
+		"changeSeparator": changeSeparator
 		//"formatNum": formatNum,
 		//"matchNum" : matchNum,
 		//"findDays" : findDays,
@@ -145,3 +145,4 @@ console.log(library.isEmail("ardiscb@fullsail.edu"));
 console.log(library.isURL("http://online.fullsail.edu"));
 console.log(library.isPhoneNum("(803)-972-0807"));
 console.log(library.makeTitle("user support associate"));
+console.log(library.changeSeparator("apples, oranges, grapes"));
