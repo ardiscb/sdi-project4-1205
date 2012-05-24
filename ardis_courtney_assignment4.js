@@ -105,12 +105,24 @@ var courtneyLib = function() {
 		//TODO: Fill in working code that fuzzy-matches a number: is the number above or below a number within a certain percent?
 	};
 
-	var findDays = function (date, date2) {
-		//TODO: Fill in working code that finds the number of days difference between two dates.
+	//Number function that finds the number of days difference between two dates
+	var findDays = function () {
+		//Set the two dates
+		today = new Date();
+		var christmas = new Date(today.getFullYear(), 11, 25); 
+		//Tests if Christmas has passed already
+		if (today.getMonth() === 11 && today.getDate() > 25){ 
+			//calculate next year's Christmas
+			christmas.setFullYear(christmas.getFullYear() + 1);
+		};
+		//Sets oneDay into milliseconds
+		var oneDay = 1000 * 60 * 60 * 24;
+		//Calculate difference btw the two dates, and convert to days
+		value = (Math.ceil((christmas.getTime() - today.getTime())/(oneDay))+" days left until Christmas!");
+		return value;
 	};
-
+	//String function that given a string version of a number such as "42", return the value as an actual Number, such as 42.
 	var convertString = function (string) {
-		//TODO: Fill in working code that given a string version of a number such as "42", return the value as an actual Number, such as 42.
 		value = parseInt(string);
 		return value;
 	};
@@ -120,17 +132,21 @@ var courtneyLib = function() {
 		//TODO: Fill in working code that finds the smallest value in an array that is greater than a given number.
 
 	};
+
+	//Not working properly:
 	var findValue = function () {
 		//TODO: Fill in working code that finds the total value of just the numbers in an array, even if some of the items are not numbers.
-		var arr = ['a', 10, 'b', 20, 'c', 30, 'd', 40];
-		var sum = 0;
-		for (var i = 0; i < arr.length; i++) {
-  			if (!isNaN(parseInt(arr[i].value))) { 
-  				sum += arr[i];
-  			}
-  		return sum;
+		var myArray = [10, "b", 20, 30, "d", 40];
+		var total = 0;
+		for(var i = 0; i < myArray.length; i++){
+			var thisVal = parseInt(myArray[i]);
+		 	if(!isNaN(thisVal)){
+		  		total += thisVal;
+		 	}
+  		return total;
 		};
 	};
+
 	var sort = function (array) {
 		//TODO: Fill in working code that given an array of objects and the name of a key, return the array sorted by the value of that key in each of the objects: "a" + [{a:2}, {a:3}, {a:1}] --> [{a:1}, {a:2}, {a:3}]
 		
@@ -149,7 +165,6 @@ var courtneyLib = function() {
 		"findNum" : findNum,
 		"findValue" : findValue,
 		"sort": sort
-
 	};
 };
 
@@ -162,7 +177,9 @@ console.log(library.isPhoneNum("(803)-555-5555"));
 console.log(library.makeTitle("user support associate"));
 console.log(library.changeSeparator("apples, oranges, grapes"));
 console.log("$" + library.formatNum(5.699));
-
-
+//console.log(library.matchNum());
+console.log(library.findDays());
 console.log(library.convertString("52"));
-//console.log(library.findValue());
+//console.log(library.findNum());
+console.log(library.findValue());//Not working
+//console.lgo(library.sort());
