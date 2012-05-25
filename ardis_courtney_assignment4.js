@@ -103,6 +103,7 @@ var courtneyLib = function() {
 
 	var matchNum = function (compare, percent) {
 		//TODO: Fill in working code that fuzzy-matches a number: is the number above or below a number within a certain percent?
+		
 	};
 
 	//Number function that finds the number of days difference between two dates
@@ -127,29 +128,35 @@ var courtneyLib = function() {
 		return value;
 	};
 
-	//Arrays
+	//Not working properly: Logic errors
 	var findNum = function (number) {
 		//TODO: Fill in working code that finds the smallest value in an array that is greater than a given number.
-
-	};
-
-	//Not working properly:
-	var findValue = function () {
-		//TODO: Fill in working code that finds the total value of just the numbers in an array, even if some of the items are not numbers.
-		var myArray = [10, "b", 20, 30, "d", 40];
-		var total = 0;
-		for(var i = 0; i < myArray.length; i++){
-			var thisVal = parseInt(myArray[i]);
-		 	if(!isNaN(thisVal)){
-		  		total += thisVal;
-		 	}
-  		return total;
+		var array = [1, 4, 6, 12, 16, 22, 34];
+		if (array[i] > number){
+			return Math.min(array);
 		};
 	};
 
-	var sort = function (array) {
+	//Not working properly: 
+	var findValue = function (myArray) {
+		//TODO: Fill in working code that finds the total value of just the numbers in an array, even if some of the items are not numbers.
+		var total = 0;
+		for(var number in myArray) {
+		  	total += parseFloat(myArray[number]);
+		};
+		return total;
+	};
+	//Not working properly: doesn't sort at all
+	var sort = function () {
 		//TODO: Fill in working code that given an array of objects and the name of a key, return the array sorted by the value of that key in each of the objects: "a" + [{a:2}, {a:3}, {a:1}] --> [{a:1}, {a:2}, {a:3}]
-		
+		array = [
+			{key: "c", number: 2},
+			{key: "c", number: 4},
+			{key: "c", number: 1},
+			{key: "c", number: 3}
+		];
+
+		return array.sort(array.number);
 	};
 
 	return {
@@ -180,6 +187,7 @@ console.log("$" + library.formatNum(5.699));
 //console.log(library.matchNum());
 console.log(library.findDays());
 console.log(library.convertString("52"));
-//console.log(library.findNum());
-console.log(library.findValue());//Not working
-//console.lgo(library.sort());
+//console.log(library.findNum(11));//Not working
+console.log(library.findValue([1, 2, 3]));//Not working properly
+//console.log(library.sort());//Not working
+
